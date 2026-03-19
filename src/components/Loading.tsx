@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import "./styles/Loading.css";
 import { useLoading } from "../context/LoadingProvider";
 
-import Marquee from "react-fast-marquee";
+import MarqueeImport from "react-fast-marquee";
+
+const MarqueeComponent = (MarqueeImport as any).default || MarqueeImport;
 
 const Loading = ({ percent }: { percent: number }) => {
   const { setIsLoading } = useLoading();
@@ -61,10 +63,10 @@ const Loading = ({ percent }: { percent: number }) => {
       </div>
       <div className="loading-screen">
         <div className="loading-marquee">
-          <Marquee>
+          <MarqueeComponent>
             <span> Full Stack Developer</span> <span>Software Engineer</span>
             <span> Full Stack Developer</span> <span>Software Engineer</span>
-          </Marquee>
+          </MarqueeComponent>
         </div>
         <div
           className={`loading-wrap ${clicked && "loading-clicked"}`}
